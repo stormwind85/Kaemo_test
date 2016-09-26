@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        {% stylesheets '@FilmsBundle/Resources/public/css/stylesInfos.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+    </head>
+    <body>
+        <div>
+            <img class="grande_jaquette" src="{{ asset('/jaquettes/'~infos.Id~'.jpg') }}" alt="Jaquette du film"/>
+            <div id="element">
+                <h1 id="titre">{{ infos.Titre }}</h1>
+                <br/>
+                <ul>
+                    <li><h3>Réalisé par {{ infos.NomRealisateur }}.</h3></li>
+                    <br/>
+                    <li><h3>Sortie le {{ infos.DateSortie|date('d ')~infos.DateSortie|date('F')|trans~infos.DateSortie|date(' Y') }}.</h3></li>
+                    <br/>
+                    <li><h3>Dure
+                            {% if (infos.Duree-infos.Duree%60)/60 == 0 %}
+                                {{ infos.Duree }}min.
+                            {% else %}
+                                {{ (infos.Duree-infos.Duree%60)/60 }}h {{ infos.Duree%60 }}min.
+                            {% endif %}
+                    </h3></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "FilmsBundle::layout.html.twig" %}
+{% block stylesheets %}
+    {% stylesheets 'bundles/films/jQuery/jquery-ui.min.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        '@jquery_and_ui'
+        '@FilmsBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block fonctions %}timeAndHide('#flashBag');{% endblock %}
+{% block contenu %}
+    <div id="flashBag">{% for flashMess in app.session.flashbag.get('notice') %}<span id="flash" onclick="clickAndHide(this.id);">{{ flashMess }}</span>{% endfor %}</div>
+    <table>
+        {# on parcourt la liste des films #}
+        {% for film in liste %}
+            <td id="element{{ film.Id }}" class="element {{ film.Position }}"
+                onmouseover="mouseOverElement({{film.Id}});" onmouseout="mouseOutElement({{film.Id}});">
+                <p class="titre">{{ film.Titre }}</p>
+                <img id="{{ film.Id }}" class="jaquette" src="{{ asset('/jaquettes/'~film.Id~'.jpg') }}" alt="Jaquette du film"/>
+            </td>
+        {% endfor %}
+    </table>
+    <div id="dialogInfosFilm"></div>
+{% endblock %}

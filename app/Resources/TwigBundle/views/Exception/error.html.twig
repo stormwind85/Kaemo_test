@@ -1,0 +1,31 @@
+{% extends "FilmsBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenu %}
+    <div class="titre">
+        {% if status_code == 404 %}
+            <h1>Page {{ status_text|trans }} - Erreur {{ status_code }}</h1>
+            <p>
+                La page demandée ne peut pas être localisée. Vérifiez s'il n'y a pas une faute d'orthographe sur l'adresse URL que vous demandez.
+            </p>
+        {% elseif status_code == 500 %}
+            <h1>{{ status_text|trans }} - Erreur {{ status_code }}</h1>
+            <p>
+                Le serveur est actuellement indisponible. La page que vous demandez ne peut être chargée. Réessayez plus tard s'il vous plaît.
+            </p>
+        {% elseif status_code == 408 %}
+            <h1>{{ status_text|trans }} - Erreur {{ status_code }}</h1>
+            <p>
+                Le serveur a mis trop de temps à exéctuer votre requête. Veuillez réessayer plus tard s'il vous plaît.
+            </p>
+        {% else %}
+            <h1>{{ status_text }} - Erreur {{ status_code }}</h1>
+            <p>
+                    Erreur survenue pendant le chargement de la page.
+            </p>
+        {% endif %}		
+    </div>
+{% endblock %}

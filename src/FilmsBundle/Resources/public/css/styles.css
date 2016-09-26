@@ -1,0 +1,35 @@
+.element{
+    /* permet de rendre les jaquettes de film alignées et espacées */
+    display: inline-block;
+    margin-left: 150px;
+    cursor: pointer;
+}
+.titre{
+    text-align: center;
+    font-weight: bold;
+}
+.jaquette{
+    border: 3px solid white;
+    height: 400px;
+    /* permet de center horizontalement une image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#banniere{
+    /* permet de rendre la longeur de la bannière dynamique */
+    width: 100%;
+}
+#flashBag{
+    text-align: center;
+}
+#flash{
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #aacd4e;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #6b9311;
+    border-radius: 5px;
+}

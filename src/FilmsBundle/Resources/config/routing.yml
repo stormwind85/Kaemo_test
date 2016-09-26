@@ -1,0 +1,21 @@
+films_homepage:
+    path:     /
+    defaults: { _controller: FilmsBundle:Films:index }
+    # permet d'exposer la route pour l'utilisation du bundle FosJsRouting
+    options:
+        expose: true
+films_infos:
+    path:     /about/{id}
+    defaults: { _controller: FilmsBundle:Films:infos }
+    requirements:
+        id: \d+
+    options:
+        expose: true
+films_update:
+    path:     /update/{id}
+    defaults: { _controller: FilmsBundle:Films:update }
+    requirements:
+        _method: POST
+        id: \d+
+    options:
+        expose: true
