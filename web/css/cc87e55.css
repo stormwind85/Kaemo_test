@@ -1,0 +1,13 @@
+.grande_jaquette{
+    min-height: 650px;
+    max-height: 750px;
+}
+#element{
+    display: inline-block;
+    position: absolute;
+    margin-left: 75px;
+    margin-right: 50px;
+}
+#titre{
+    text-align: center;
+}
